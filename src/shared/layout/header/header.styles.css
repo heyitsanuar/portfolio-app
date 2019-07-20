@@ -1,0 +1,25 @@
+.header__container {
+  display: flex;
+  max-width: 1200px;
+  width: 85%;
+  margin: auto;
+  justify-content: space-between;
+  padding: 10px 0;
+  color: #fff;
+}
+
+.header__logo img {
+  height: 40px;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+}
+
+.header__user img {
+  width: 45px;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-left: 20px;
+}
