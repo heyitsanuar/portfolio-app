@@ -1,3 +1,3 @@
-import { createHashHistory } from 'history';
+import { createBrowserHistory } from 'history';
 
-export const routerHistory = createHashHistory();
+export const routerHistory = createBrowserHistory();
