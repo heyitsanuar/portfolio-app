@@ -3,12 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { AppStateInterface } from '@rdx/root.reducer';
 
-import { HeaderComponent } from '@layout/header/header.component';
+import { HeaderComponent } from './header.component';
 
 type HeaderContainerProps = {};
 
-const Header = ({  }: HeaderContainerProps) => {
-  return <div>Header contianer</div>;
+const Header = (props: HeaderContainerProps) => {
+  return <HeaderComponent />;
 };
 
 const mapStateToProps = (state: AppStateInterface) => ({});

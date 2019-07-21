@@ -10,6 +10,8 @@ import { AppStateInterface } from '@rdx/root.reducer';
 import { ThemeProvider } from 'react-jss';
 import { configRootTheme } from '@themes/root.theme';
 
+import './normalize.styles.css';
+
 type AppProps = {
   theme: string;
 };
