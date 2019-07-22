@@ -1,5 +1,5 @@
 .btn {
-  color: $black;
+  color: #444444;
 }
 
 .btn__link {
@@ -14,7 +14,7 @@
 }
 
 .btn__link:hover {
-  background: $purple;
+  background: #3d2b3b;
   color: #ffffff;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .btn--icons:hover {
-  background: $red;
+  background: #df3940;
 }
 
 .btn--no-link {

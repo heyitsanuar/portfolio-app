@@ -11,6 +11,7 @@ import { ThemeProvider } from 'react-jss';
 import { configRootTheme } from '@themes/root.theme';
 
 import './normalize.styles.css';
+import { AboutComponent } from './about/about.component';
 
 type AppProps = {
   theme: string;
@@ -22,6 +23,9 @@ const App = ({ theme }: AppProps) => {
       <ThemeProvider theme={configRootTheme(theme)}>
         <div>
           <AppRoutes />
+          <section className="landing-page">
+            <AboutComponent />
+          </section>
         </div>
       </ThemeProvider>
     </Router>
