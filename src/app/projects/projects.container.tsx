@@ -1,6 +1,6 @@
 import React from 'react';
-import { ProjectsComponent } from './projects.component';
+import { ProjectOverviewComponent } from './overview.component';
 
 export const ProjectContainer = (props: any) => {
-  return <ProjectsComponent />;
+  return <ProjectOverviewComponent />;
 };
