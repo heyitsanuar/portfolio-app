@@ -16,7 +16,7 @@ const UnstyledSkillItem = ({ name, classes }: SkillItemProps) => (
     </div>
     <div className="col-xs-10 col-lg-12">
       <div className="skills__pb">
-        <div className="skills__rate w-95 w-0"></div>
+        <div className="skills__rate w-95"></div>
       </div>
     </div>
   </div>

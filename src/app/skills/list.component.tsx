@@ -16,14 +16,18 @@ export const SkillListComponent = () => {
   const tools: any = ['Express.js', 'Git', 'SQL', 'NO-SQL', 'SASS'];
 
   const renderItemList = (): any => {
-    return items.map((item: any) => {
-      return <SkillItemComponent {...item} />;
+    return items.map((item: any, index: string): any => {
+      return <SkillItemComponent key={index} {...item} />;
     });
   };
 
   const renderTools = (): any => {
-    return tools.map((tool: any) => {
-      return <i className="btn btn__link btn--no-link mb-1">{tool}</i>;
+    return tools.map((tool: any, index: string): any => {
+      return (
+        <i key={index} className="btn btn__link btn--no-link mb-1">
+          {tool}
+        </i>
+      );
     });
   };
 

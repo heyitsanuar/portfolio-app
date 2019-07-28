@@ -10,7 +10,7 @@
 }
 
 .about__bg--animated {
-  width: 58.333%;
+  width: 58.333% !important;
 }
 
 .about__box {
@@ -34,8 +34,8 @@
   color: #ffd34e;
 }
 
-.about--animated {
-  height: 0;
+.about__title--animated {
+  height: 0 !important;
 }
 
 .about__picture {
