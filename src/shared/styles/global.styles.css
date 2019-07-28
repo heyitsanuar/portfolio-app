@@ -1,6 +1,6 @@
 body {
   font-family: 'PT Sans Narrow', sans-serif;
-  background: $purple;
+  background: #3d2b3b;
 }
 
 h1,
@@ -15,7 +15,7 @@ p {
 }
 
 a {
-  color: $black;
+  color: #444444;
   text-decoration: none;
 }
 

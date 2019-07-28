@@ -10,8 +10,13 @@ import { AppStateInterface } from '@rdx/root.reducer';
 import { ThemeProvider } from 'react-jss';
 import { configRootTheme } from '@themes/root.theme';
 
-import './normalize.styles.css';
 import { AboutComponent } from './about/about.component';
+import { ProjectContainer } from './projects/projects.container';
+import { SkillsComponent } from './skills/skills.component';
+import { FactsComponent } from './facts/facts.component';
+import { FooterComponent } from './../shared/layout/footer/footer.component';
+
+import './normalize.styles.css';
 
 type AppProps = {
   theme: string;
@@ -25,7 +30,11 @@ const App = ({ theme }: AppProps) => {
           <AppRoutes />
           <section className="landing-page">
             <AboutComponent />
+            <ProjectContainer />
+            <SkillsComponent />
+            <FactsComponent />
           </section>
+          <FooterComponent />
         </div>
       </ThemeProvider>
     </Router>
