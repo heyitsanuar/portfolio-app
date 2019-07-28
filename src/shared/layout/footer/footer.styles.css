@@ -16,14 +16,14 @@
   transition: all 0.3s ease;
 }
 
-.footer__icon-social:hover:has(.fa-github) {
+.github:hover {
   background-color: #000;
 }
 
-.footer__icon-social:hover:has(.fa-facebook-f) {
+.facebook:hover {
   background-color: #3b5998;
 }
 
-.footer__icon-social:hover:has(.fa-linkedin-in) {
+.linkedin:hover {
   background-color: #0077b5;
 }

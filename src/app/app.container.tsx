@@ -14,7 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { ProjectContainer } from './projects/projects.container';
 import { SkillsComponent } from './skills/skills.component';
 import { FactsComponent } from './facts/facts.component';
-import { FooterComponent } from './../shared/layout/footer/footer.component';
+import { FooterContainer } from './../shared/layout/footer/footer.container';
 
 import './normalize.styles.css';
 
@@ -34,7 +34,7 @@ const App = ({ theme }: AppProps) => {
             <SkillsComponent />
             <FactsComponent />
           </section>
-          <FooterComponent />
+          <FooterContainer />
         </div>
       </ThemeProvider>
     </Router>
