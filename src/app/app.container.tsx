@@ -12,7 +12,7 @@ import { configRootTheme } from '@themes/root.theme';
 
 import { AboutComponent } from './about/about.component';
 import { ProjectContainer } from './projects/projects.container';
-import { SkillsComponent } from './skills/skills.component';
+import { SkillsContainer } from './skills/skills.container';
 import { FactsComponent } from './facts/facts.component';
 import { FooterContainer } from './../shared/layout/footer/footer.container';
 
@@ -31,7 +31,7 @@ const App = ({ theme }: AppProps) => {
           <section className="landing-page">
             <AboutComponent />
             <ProjectContainer />
-            <SkillsComponent />
+            <SkillsContainer />
             <FactsComponent />
           </section>
           <FooterContainer />
