@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { ProjectItemComponent } from './item.component';
 
+import { Waypoint } from 'react-waypoint';
 import injectSheet, { Theming } from 'react-jss';
 
 import restaurantHQ from '@img/projects/restaurant-hq.jpg';
@@ -22,6 +23,7 @@ import nodeTech from '@img/technologies/node.png';
 import expressTech from '@img/technologies/express.png';
 import cssTech from '@img/technologies/css.png';
 import htmlTech from '@img/technologies/html.png';
+
 import './projects.styles.css';
 
 const projectOverviewStyles = (theme: Theming) => ({});
@@ -106,6 +108,13 @@ const ProjectOverview = (props: ProjectOverviewComponentInterface) => {
       isVisible: false,
     },
   ];
+  const titleRef = useRef(null);
+  const introTextRef = useRef(null);
+
+  const handleProjectsIntroWaypoint = (): any => {
+    (titleRef as any).current.classList.add('project-animation__title--animated');
+    (introTextRef as any).current.classList.add('project-animation__text--animated');
+  };
 
   const renderProjects = () => {
     return projects.map((project, index) => {
@@ -114,29 +123,39 @@ const ProjectOverview = (props: ProjectOverviewComponentInterface) => {
   };
 
   return (
-    <section id="projects" className="project page-section" data-matching-link="#link-projects">
-      <div className="container">
-        <div className="project__text">
-          <div className="project__section-title col-xs-12 col-sm-3">
-            <div id="project-animation__title" className="project-animation__title" />
-            <h1 className="project__text-title project__text-title--side">PROJECTS</h1>
+    <Waypoint onEnter={handleProjectsIntroWaypoint} bottomOffset="30%">
+      <section id="projects" className="project page-section" data-matching-link="#link-projects">
+        <div className="container">
+          <div className="project__text">
+            <div className="project__section-title col-xs-12 col-sm-3">
+              <div
+                ref={titleRef}
+                id="project-animation__title"
+                className="project-animation__title"
+              />
+              <h1 className="project__text-title project__text-title--side">PROJECTS</h1>
+            </div>
+            <div className="project__section-text col-xs-12 col-sm-9">
+              <div
+                ref={introTextRef}
+                id="project-animation__text"
+                className="project-animation__text"
+              />
+              <h1 className="project__text-title mb-3">WHERE IDEAS ARE BORN</h1>
+              <div className="border border--selftrough" />
+              <p className="project__text-description text-white mt-2">
+                You will see some of my projects below, I've always looked up best practices, and
+                learned new technologies for me to master. Quite frankly, I think of myself as a
+                passionate person willing to never stop learning.
+              </p>
+            </div>
           </div>
-          <div className="project__section-text col-xs-12 col-sm-9">
-            <div id="project-animation__text" className="project-animation__text" />
-            <h1 className="project__text-title mb-3">WHERE IDEAS ARE BORN</h1>
-            <div className="border border--selftrough" />
-            <p className="project__text-description text-white mt-2">
-              You will see some of my projects below, I've always looked up best practices, and
-              learned new technologies for me to master. Quite frankly, I think of myself as a
-              passionate person willing to never stop learning.
-            </p>
+          <div id="project-container" className="projects">
+            {renderProjects()}
           </div>
         </div>
-        <div id="project-container" className="projects">
-          {renderProjects()}
-        </div>
-      </div>
-    </section>
+      </section>
+    </Waypoint>
   );
 };
 
