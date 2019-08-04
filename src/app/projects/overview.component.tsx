@@ -35,6 +35,7 @@ interface ProjectOverviewComponentInterface {
 const ProjectOverview = (props: ProjectOverviewComponentInterface) => {
   const projects = [
     {
+      _id: '0',
       title: 'Lissandra',
       description: 'A simple E-commerce store counting on storing items with a user system.',
       info:
@@ -56,9 +57,10 @@ const ProjectOverview = (props: ProjectOverviewComponentInterface) => {
         { title: 'HTML', url: htmlTech },
         { title: 'CSS', url: cssTech },
       ],
-      isVisible: true,
+      isInitial: true,
     },
     {
+      _id: '1',
       title: 'Visual Video',
       description: 'Landing page for advertisement of an event video startup.',
       info:
@@ -78,9 +80,10 @@ const ProjectOverview = (props: ProjectOverviewComponentInterface) => {
         { title: 'Node', url: nodeTech },
         { title: 'Express.js', url: expressTech },
       ],
-      isVisible: false,
+      isInitial: false,
     },
     {
+      _id: '2',
       title: 'Jean Georges',
       description:
         'Landing page for a restaurant which just took off looking for being known even more.',
@@ -105,7 +108,7 @@ const ProjectOverview = (props: ProjectOverviewComponentInterface) => {
           url: cssTech,
         },
       ],
-      isVisible: false,
+      isInitial: false,
     },
   ];
   const titleRef = useRef(null);

@@ -5,7 +5,8 @@ import { ProjectTechnologyProps, ProjectTechnologyComponent } from './technology
 import { Waypoint } from 'react-waypoint';
 import classNames from 'classnames';
 
-type ProjectItemProps = {
+export type ProjectItemProps = {
+  _id: string;
   title: string;
   description: string;
   info: string;
@@ -19,7 +20,7 @@ type ProjectItemProps = {
     lq: string;
   };
   technologies: ProjectTechnologyProps[];
-  isVisible: boolean;
+  isInitial: boolean;
 };
 
 export const ProjectItemComponent = ({
@@ -29,7 +30,7 @@ export const ProjectItemComponent = ({
   links,
   images,
   technologies,
-  isVisible,
+  isInitial,
 }: ProjectItemProps) => {
   const projectRef = useRef(null);
   const technologiesRef = useRef(null);
@@ -52,7 +53,7 @@ export const ProjectItemComponent = ({
     ));
   };
 
-  const isHiddenClass = isVisible ? '' : 'project-item--hidden';
+  const isHiddenClass = isInitial ? '' : 'project-item--hidden';
 
   return (
     <Waypoint onEnter={handleProjectAnimation} bottomOffset="25%">

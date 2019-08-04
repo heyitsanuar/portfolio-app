@@ -18,21 +18,32 @@ import { FooterContainer } from './../shared/layout/footer/footer.container';
 
 import './normalize.styles.css';
 import { fetchUserAction } from './user.actions';
+import { fetchProjectsAction } from './projects/projects.action';
 
 type AppProps = {
   fetchUserAction: Function;
+  fetchProjectsAction: Function;
   cancelFetchUserAction: Function;
+  cancelFetchProjectsAction: Function;
   theme: string;
 };
 
-const App = ({ cancelFetchUserAction, fetchUserAction, theme }: AppProps) => {
+const App = ({
+  fetchUserAction,
+  fetchProjectsAction,
+  cancelFetchUserAction,
+  cancelFetchProjectsAction,
+  theme,
+}: AppProps) => {
   useEffect(() => {
     fetchUserAction();
+    fetchProjectsAction();
 
     return () => {
       cancelFetchUserAction();
+      cancelFetchProjectsAction();
     };
-  }, [cancelFetchUserAction, fetchUserAction]);
+  }, [cancelFetchProjectsAction, cancelFetchUserAction, fetchProjectsAction, fetchUserAction]);
 
   return (
     <Router history={routerHistory}>
@@ -58,7 +69,9 @@ const mapStateToProps = (state: AppStateInterface) => ({
 
 const mapDispatchToProps = {
   fetchUserAction: fetchUserAction.request,
+  fetchProjectsAction: fetchProjectsAction.request,
   cancelFetchUserAction: fetchUserAction.fulfill,
+  cancelFetchProjectsAction: fetchProjectsAction.fulfill,
 };
 
 export const AppContainer = connect(
