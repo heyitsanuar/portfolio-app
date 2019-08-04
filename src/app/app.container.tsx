@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Router } from 'react-router-dom';
 import { routerHistory } from '@routes/router.history';
@@ -17,12 +17,23 @@ import { FactsComponent } from './facts/facts.component';
 import { FooterContainer } from './../shared/layout/footer/footer.container';
 
 import './normalize.styles.css';
+import { fetchUserAction } from './user.actions';
 
 type AppProps = {
+  fetchUserAction: Function;
+  cancelFetchUserAction: Function;
   theme: string;
 };
 
-const App = ({ theme }: AppProps) => {
+const App = ({ cancelFetchUserAction, fetchUserAction, theme }: AppProps) => {
+  useEffect(() => {
+    fetchUserAction();
+
+    return () => {
+      cancelFetchUserAction();
+    };
+  }, [cancelFetchUserAction, fetchUserAction]);
+
   return (
     <Router history={routerHistory}>
       <ThemeProvider theme={configRootTheme(theme)}>
@@ -45,4 +56,12 @@ const mapStateToProps = (state: AppStateInterface) => ({
   theme: state.theme.activeTheme,
 });
 
-export const AppContainer = connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  fetchUserAction: fetchUserAction.request,
+  cancelFetchUserAction: fetchUserAction.fulfill,
+};
+
+export const AppContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
