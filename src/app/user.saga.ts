@@ -1,6 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { fetchUserAction } from './user.actions';
-import { AxiosService } from './../services/axios/axios.service';
+import { AxiosService } from '@services/axios/axios.service';
 
 let userService: any;
 
