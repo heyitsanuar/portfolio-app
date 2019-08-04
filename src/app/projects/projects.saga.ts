@@ -7,7 +7,7 @@ let projectService: any;
 
 function* fetchProjectsService() {
   projectService = new AxiosService();
-  console.log('Entra al saga');
+
   const { data }: any = yield projectService.get({ endpoint: '/project' });
 
   return data;
@@ -28,7 +28,6 @@ function* fetchProjectsRequest() {
 
     yield put(fetchProjectsAction.success({ items }));
   } catch (error) {
-    console.log(error);
     if (!error.wasCancelled) {
       yield put(fetchProjectsAction.failure({ error }));
     }

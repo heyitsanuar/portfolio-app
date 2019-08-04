@@ -19,31 +19,38 @@ import { FooterContainer } from './../shared/layout/footer/footer.container';
 import './normalize.styles.css';
 import { fetchUserAction } from './user.actions';
 import { fetchProjectsAction } from './projects/projects.action';
+import { fetchSkillsAction } from './skills/skills.action';
 
 type AppProps = {
   fetchUserAction: Function;
   fetchProjectsAction: Function;
+  fetchSkillsAction: Function;
   cancelFetchUserAction: Function;
   cancelFetchProjectsAction: Function;
+  cancelFetchSkillsAction: Function;
   theme: string;
 };
 
 const App = ({
   fetchUserAction,
   fetchProjectsAction,
+  fetchSkillsAction,
   cancelFetchUserAction,
   cancelFetchProjectsAction,
+  cancelFetchSkillsAction,
   theme,
 }: AppProps) => {
   useEffect(() => {
     fetchUserAction();
     fetchProjectsAction();
+    fetchSkillsAction();
 
     return () => {
       cancelFetchUserAction();
       cancelFetchProjectsAction();
+      fetchSkillsAction();
     };
-  }, [cancelFetchProjectsAction, cancelFetchUserAction, fetchProjectsAction, fetchUserAction]);
+  }, [cancelFetchProjectsAction, cancelFetchUserAction, fetchProjectsAction, fetchSkillsAction, fetchUserAction]);
 
   return (
     <Router history={routerHistory}>
@@ -70,8 +77,10 @@ const mapStateToProps = (state: AppStateInterface) => ({
 const mapDispatchToProps = {
   fetchUserAction: fetchUserAction.request,
   fetchProjectsAction: fetchProjectsAction.request,
+  fetchSkillsAction: fetchSkillsAction.request,
   cancelFetchUserAction: fetchUserAction.fulfill,
   cancelFetchProjectsAction: fetchProjectsAction.fulfill,
+  cancelFetchSkillsAction: fetchSkillsAction.fulfill,
 };
 
 export const AppContainer = connect(

@@ -5,14 +5,14 @@ import { handleActions } from 'redux-actions';
 import { fetchUserAction } from './user.actions';
 
 export interface UserStateInterface {
-  user: UserType;
+  session: UserType;
   isLoadingData: boolean;
   hasError: boolean;
   error?: any;
 }
 
 const INITIAL_STATE: UserStateInterface = {
-  user: {
+  session: {
     name: '',
     surname: '',
     description: '',
@@ -37,7 +37,7 @@ export const userReducer = handleActions(
     [fetchUserAction.SUCCESS]: (state: UserStateInterface, { payload }: ActionInterface) => ({
       ...state,
       isLoadingData: false,
-      user: payload.user,
+      session: payload.user,
     }),
   },
   INITIAL_STATE,

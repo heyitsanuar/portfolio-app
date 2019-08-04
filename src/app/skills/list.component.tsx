@@ -1,23 +1,22 @@
 import React from 'react';
 
+import { SkillType } from './skill.type';
+
 import { SkillItemComponent } from './item.component';
 
 import calgaryImage from '@img/skills-background.png';
 import './skills.styles.css';
 
-export const SkillListComponent = () => {
-  const items: any = [
-    { name: 'HTML' },
-    { name: 'CSS' },
-    { name: 'JavaScript' },
-    { name: 'Angular' },
-    { name: 'React' },
-  ];
+interface SkillListProps {
+  skills: SkillType[];
+}
+
+export const SkillListComponent = ({ skills }: SkillListProps) => {
   const tools: any = ['Express.js', 'Git', 'SQL', 'NO-SQL', 'SASS'];
 
   const renderItemList = (): any => {
-    return items.map((item: any, index: string): any => {
-      return <SkillItemComponent key={index} {...item} />;
+    return skills.map((skill: SkillType) => {
+      return <SkillItemComponent key={skill._id} skill={skill} />;
     });
   };
 

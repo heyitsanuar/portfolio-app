@@ -15,14 +15,11 @@ type AboutComponentInterface = {
 
 const aboutStyles = (theme: Theming) => ({});
 
-const About = (props: AboutComponentInterface) => {
+const About = ({ description }: AboutComponentInterface) => {
   const backgroundRef = useRef(null);
   const titleRef = useRef(null);
-  const description =
-    'Few years ago I found out web development was my future, I was not about to leave things as they were, started learning Javascript, afterwards some frameworks, such as Angular, Laravel. Coming up with measures to keep it up turned out to be my hobby.';
 
   const handleAboutAnimation = (): any => {
-    console.log('hello');
     (backgroundRef as any).current.classList.add('about__bg--animated');
     (titleRef as any).current.classList.add('about__title--animated');
   };
