@@ -6,18 +6,35 @@ import { ProjectItemProps } from '@app/projects/item.component';
 import { ProjectOverviewComponent } from './overview.component';
 
 import { connect } from 'react-redux';
-import { getProjects } from './projects.reducer';
+import { changeProjectAction } from './projects.action';
+import { getProjects, getLastIndex } from './projects.reducer';
 
 export interface ProjectsContainerProps {
   projects: ProjectItemProps[];
+  lastIndex: number;
+  changeProjectAction: Function;
 }
 
-const Project = ({ projects }: ProjectsContainerProps) => {
-  return <ProjectOverviewComponent projects={projects} />;
+const Project = ({ projects, lastIndex, changeProjectAction }: ProjectsContainerProps) => {
+  return (
+    <ProjectOverviewComponent
+      projects={projects}
+      changeProjectAction={changeProjectAction}
+      lastIndex={lastIndex}
+    />
+  );
 };
 
 const mapStateToProps = (state: AppStateInterface) => ({
   projects: getProjects(state),
+  lastIndex: getLastIndex(state),
 });
 
-export const ProjectContainer = connect(mapStateToProps)(Project);
+const mapDispatchToProps = {
+  changeProjectAction: changeProjectAction.trigger,
+};
+
+export const ProjectContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Project);

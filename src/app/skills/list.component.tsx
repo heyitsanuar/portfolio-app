@@ -12,21 +12,27 @@ interface SkillListProps {
 }
 
 export const SkillListComponent = ({ skills }: SkillListProps) => {
-  const tools: any = ['Express.js', 'Git', 'SQL', 'NO-SQL', 'SASS'];
-
   const renderItemList = (): any => {
     return skills.map((skill: SkillType) => {
-      return <SkillItemComponent key={skill._id} skill={skill} />;
+      if (!skill.isSoftSkill) {
+        return <SkillItemComponent key={skill._id} skill={skill} />;
+      }
+
+      return null;
     });
   };
 
   const renderTools = (): any => {
-    return tools.map((tool: any, index: string): any => {
-      return (
-        <i key={index} className="btn btn__link btn--no-link mb-1">
-          {tool}
-        </i>
-      );
+    return skills.map((skill: SkillType) => {
+      if (skill.isSoftSkill) {
+        return (
+          <i key={skill._id} className="btn btn__link btn--no-link mb-1">
+            {skill.title}
+          </i>
+        );
+      }
+
+      return null;
     });
   };
 

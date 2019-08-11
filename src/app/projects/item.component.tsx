@@ -1,36 +1,22 @@
 import React, { useRef } from 'react';
 
-import { ProjectTechnologyProps, ProjectTechnologyComponent } from './technology.component';
+import { ProjectType } from './project.type';
+
+import { ProjectTechnologyComponent } from './technology.component';
 
 import { Waypoint } from 'react-waypoint';
 import classNames from 'classnames';
 
 export type ProjectItemProps = {
-  _id: string;
-  title: string;
-  description: string;
-  info: string;
-  links: {
-    webpage: string;
-    repo: string;
-  };
-  images: {
-    hq: string;
-    mq: string;
-    lq: string;
-  };
-  technologies: ProjectTechnologyProps[];
-  isInitial: boolean;
+  project: ProjectType;
+  lastIndex: number;
+  changePageAction: Function;
 };
 
 export const ProjectItemComponent = ({
-  title,
-  description,
-  info,
-  links,
-  images,
-  technologies,
-  isInitial,
+  project,
+  lastIndex,
+  changePageAction,
 }: ProjectItemProps) => {
   const projectRef = useRef(null);
   const technologiesRef = useRef(null);
@@ -47,13 +33,18 @@ export const ProjectItemComponent = ({
     );
   };
 
+  const handleChangePage = (e: any, direction: string) => {
+    e.preventDefault();
+    changePageAction({ index: project._id, direction });
+  };
+
   const renderTechnologies = () => {
-    return technologies.map((technology, index) => (
+    return project.technologies.map((technology, index) => (
       <ProjectTechnologyComponent key={index} {...technology} />
     ));
   };
 
-  const isHiddenClass = isInitial ? '' : 'project-item--hidden';
+  const isHiddenClass = project.isInitial ? '' : 'project-item--hidden';
 
   return (
     <Waypoint onEnter={handleProjectAnimation} bottomOffset="25%">
@@ -61,48 +52,50 @@ export const ProjectItemComponent = ({
         <div className="project__info">
           <div ref={projectRef} id="project-animation__info" className="project-animation__info" />
           <div className="project__oversight">
-            <h4 className="project__title">{title}</h4>
+            <h4 className="project__title">{project.title}</h4>
             <div className="border" style={{ width: 100, height: 2 }} />
-            <p className="text-white mt-15">{description}</p>
+            <p className="text-white mt-15">{project.description}</p>
             <div className="d-flex mt-3">
               <a
-                href={links.webpage}
+                href={project.links.webpage}
                 target="blank"
                 className="btn btn__link"
                 style={{ marginLeft: 0 }}
               >
                 View
               </a>
-              <a href={links.repo} target="blank" className="btn btn__link">
+              <a href={project.links.repo} target="blank" className="btn btn__link">
                 Git Repo
               </a>
             </div>
           </div>
           <picture className="project__picture">
-            <source srcSet={images.hq} media="(min-width: 992px)" />
-            <source srcSet={images.mq} media="(min-width: 768px)" />
-            <img className="image lazyload" srcSet={images.lq} alt="Restaurant Project" />
+            <source srcSet={project.images.hq} media="(min-width: 992px)" />
+            <source srcSet={project.images.mq} media="(min-width: 768px)" />
+            <img className="image lazyload" srcSet={project.images.lq} alt="Restaurant Project" />
           </picture>
           <div className="project__controls">
-            <a
-              href="/"
-              className="btn btn__link btn--icons btn__link--back"
+            <span
+              className={`btn btn__link btn--icons btn__link--back ${
+                project.index === lastIndex ? 'button--disabled' : ''
+              }`}
               style={{ marginLeft: 0 }}
+              onClick={e => handleChangePage(e, 'next')}
             >
               <i className="fas fa-arrow-up" />
-            </a>
-            <a
-              href="/"
-              className="btn btn__link btn--icons"
+            </span>
+            <span
+              className={`btn btn__link btn--icons ${
+                project.index === 0 ? 'button--disabled' : ''
+              }`}
               style={{
                 marginLeft: 0,
                 marginTop: 10,
-                background: '#979797',
-                cursor: 'not-allowed',
               }}
+              onClick={e => handleChangePage(e, 'back')}
             >
               <i className="fas fa-arrow-down" />
-            </a>
+            </span>
           </div>
         </div>
         <Waypoint onEnter={handleTechnologiesAnimation} bottomOffset="20%">
@@ -119,26 +112,30 @@ export const ProjectItemComponent = ({
                 id="project-animation__description"
                 className="project-animation__description"
               />
-              <p className="project__description-text">{info}</p>
+              <p className="project__description-text">{project.info}</p>
               <div className="border border--selftrough" />
             </div>
           </div>
         </Waypoint>
         <div className="project__controls--mobile">
-          <a
-            href="/"
-            className="btn btn__link btn__link--mobile btn__link--back btn--icons"
+          <span
+            className={`btn btn__link btn__link--mobile btn__link--back btn--icons ${
+              project.index === lastIndex ? 'button--disabled' : ''
+            }`}
             style={{ marginLeft: 0 }}
+            onClick={e => handleChangePage(e, 'back')}
           >
             <i className="fas fa-arrow-left" />
-          </a>
-          <a
-            href="/"
-            className="btn btn__link btn__link--mobile btn--icons"
-            style={{ marginLeft: 0, background: '#979797' }}
+          </span>
+          <span
+            className={`btn btn__link btn__link--mobile btn--icons ${
+              project.index === 0 ? 'button--disabled' : ''
+            }`}
+            style={{ marginLeft: 0 }}
+            onClick={e => handleChangePage(e, 'next')}
           >
             <i className="fas fa-arrow-right" />
-          </a>
+          </span>
         </div>
       </div>
     </Waypoint>

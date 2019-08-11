@@ -112,6 +112,11 @@
   display: none;
 }
 
+.button--disabled {
+  background: #979797 !important;
+  cursor: not-allowed;
+}
+
 @media (min-width: 576px) {
   .project__text {
     padding-top: 9.375rem;

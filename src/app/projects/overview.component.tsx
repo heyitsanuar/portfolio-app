@@ -11,10 +11,16 @@ const projectOverviewStyles = (theme: Theming) => ({});
 
 interface ProjectOverviewComponentInterface {
   projects: ProjectItemProps[];
+  lastIndex: number;
+  changeProjectAction: Function;
   classes?: any;
 }
 
-const ProjectOverview = ({ projects }: ProjectOverviewComponentInterface) => {
+const ProjectOverview = ({
+  projects,
+  lastIndex,
+  changeProjectAction,
+}: ProjectOverviewComponentInterface) => {
   const titleRef = useRef(null);
   const introTextRef = useRef(null);
 
@@ -24,7 +30,14 @@ const ProjectOverview = ({ projects }: ProjectOverviewComponentInterface) => {
   };
 
   const renderProjects = () => {
-    return projects.map((project, index) => <ProjectItemComponent key={index} {...project} />);
+    return projects.map((project: any) => (
+      <ProjectItemComponent
+        key={project._id}
+        project={project}
+        changePageAction={changeProjectAction}
+        lastIndex={lastIndex}
+      />
+    ));
   };
 
   return (

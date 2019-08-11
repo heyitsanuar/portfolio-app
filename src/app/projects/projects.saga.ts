@@ -1,7 +1,10 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { fetchProjectsAction } from './projects.action';
+
+import { ProjectType } from './project.type';
+
+import { fetchProjectsAction, changeProjectAction } from './projects.action';
+
 import { AxiosService } from '@services/axios/axios.service';
-import { ProjectItemProps } from '@app/projects/item.component';
 
 let projectService: any;
 
@@ -22,8 +25,8 @@ function* fetchProjectsRequest() {
     const { projects }: any = yield call(fetchProjectsService);
     let items = {};
 
-    projects.forEach((project: ProjectItemProps) => {
-      items = { ...items, [project._id]: project };
+    projects.forEach((project: ProjectType, index: any) => {
+      items = { ...items, [project._id]: { ...project, index } };
     });
 
     yield put(fetchProjectsAction.success({ items }));
@@ -37,4 +40,12 @@ function* fetchProjectsRequest() {
 export function* fetchProjectsSaga() {
   yield takeLatest(fetchProjectsAction.REQUEST, fetchProjectsRequest);
   yield takeLatest(fetchProjectsAction.FULFILL, cancelFetchService);
+}
+
+function* changeProjectPage(payload: any) {
+  yield put(changeProjectAction.fulfill());
+}
+
+export function* changeProjectSaga() {
+  yield takeLatest(changeProjectAction.TRIGGER, changeProjectPage);
 }
