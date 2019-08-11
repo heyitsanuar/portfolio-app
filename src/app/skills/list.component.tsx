@@ -5,13 +5,21 @@ import { SkillType } from './skill.type';
 import { SkillItemComponent } from './item.component';
 
 import calgaryImage from '@img/skills-background.png';
+import injectSheet from 'react-jss';
 import './skills.styles.css';
 
 export interface SkillListProps {
   skills: SkillType[];
+  classes: any;
 }
 
-export const SkillListComponent = ({ skills }: SkillListProps) => {
+const skillListStyles = (theme: any) => ({
+  skills: {
+    backgroundColor: '#df3940',
+  },
+});
+
+const SkillList = ({ skills, classes }: SkillListProps) => {
   const renderItemList = () => {
     return skills.map((skill: SkillType) => {
       if (!skill.isSoftSkill) {
@@ -37,7 +45,11 @@ export const SkillListComponent = ({ skills }: SkillListProps) => {
   };
 
   return (
-    <section id="skills" className="skills page-section" data-matching-link="#link-skills">
+    <section
+      id="skills"
+      className={`skills ${classes.skills} page-section`}
+      data-matching-link="#link-skills"
+    >
       <div className="container">
         <div className="skills__statistics col-xs-12 col-sm-6 col-lg-6">
           <h1 className="skills__title">SKILLS</h1>
@@ -54,3 +66,5 @@ export const SkillListComponent = ({ skills }: SkillListProps) => {
     </section>
   );
 };
+
+export const SkillListComponent = injectSheet(skillListStyles)(SkillList);

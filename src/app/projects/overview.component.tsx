@@ -3,11 +3,15 @@ import React, { useRef } from 'react';
 import { ProjectItemComponent, ProjectItemProps } from './item.component';
 
 import { Waypoint } from 'react-waypoint';
-import injectSheet, { Theming } from 'react-jss';
+import injectSheet from 'react-jss';
 
 import './projects.styles.css';
 
-const projectOverviewStyles = (theme: Theming) => ({});
+const projectOverviewStyles = (theme: any) => ({
+  'project-animation__title': {
+    backgroundColor: theme.mainPurple,
+  },
+});
 
 export interface ProjectOverviewComponentProps {
   projects: ProjectItemProps[];
@@ -20,6 +24,7 @@ const ProjectOverview = ({
   projects,
   lastIndex,
   changeProjectAction,
+  classes,
 }: ProjectOverviewComponentProps) => {
   const titleRef = useRef(null);
   const introTextRef = useRef(null);
@@ -49,7 +54,7 @@ const ProjectOverview = ({
               <div
                 ref={titleRef}
                 id="project-animation__title"
-                className="project-animation__title"
+                className={`project-animation__title ${classes['project-animation__title']}`}
               />
               <h1 className="project__text-title project__text-title--side">PROJECTS</h1>
             </div>

@@ -22,7 +22,6 @@
   transform: translateX(-50%);
   border: 7px solid #ffffff;
   width: 80%;
-  background: #3d2b3b;
 }
 
 .about__info {
@@ -31,7 +30,6 @@
 
 .about__title {
   font-size: 2.5rem;
-  color: #ffd34e;
 }
 
 .about__title--animated {
@@ -53,7 +51,6 @@
   }
 
   .about__bg {
-    background: #df3940;
     height: 100%;
   }
 
@@ -63,7 +60,6 @@
 
   .about__title--animation {
     position: absolute;
-    background: #df3940;
     width: 4.3125rem;
     height: 14.375rem;
     margin-left: 5rem;

@@ -17,15 +17,15 @@ interface HeaderComponentProps extends RouteComponentProps {
 
 const styles = (theme: any) => ({
   header: {
-    background: theme.mainBackground,
+    backgroundColor: theme.mainRed,
     color: theme.mainText,
   },
 });
 
-export const Header = ({ classes }: HeaderComponentProps) => {
+const Header = ({ classes }: HeaderComponentProps) => {
   return (
     <div>
-      <header id="header" className="header">
+      <header id="header" className={`header ${classes.header}`}>
         <nav id="menu" className="header__menu">
           <i
             id="btn-menu-close"
