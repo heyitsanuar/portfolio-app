@@ -6,18 +6,30 @@ import { ProjectTechnologyComponent } from './technology.component';
 
 import { Waypoint } from 'react-waypoint';
 import classNames from 'classnames';
+import injectSheet from 'react-jss';
 
 export interface ProjectItemProps {
   project: ProjectType;
   lastIndex: number;
   changePageAction: Function;
+  classes?: any;
 }
 
-export const ProjectItemComponent = ({
-  project,
-  lastIndex,
-  changePageAction,
-}: ProjectItemProps) => {
+const projectItemStyles = (theme: any) => ({
+  project__info: {
+    backgroundColor: theme.mainRed,
+  },
+  'project-animation__description': {
+    backgroundColor: theme.mainPurple,
+  },
+  '@media (min-width: 1200px)': {
+    'project-animation__info': {
+      backgroundColor: theme.mainRed,
+    },
+  },
+});
+
+const ProjectItem = ({ project, lastIndex, changePageAction, classes }: ProjectItemProps) => {
   const projectRef = useRef(null);
   const technologiesRef = useRef(null);
   const projectDescriptionRef = useRef(null);
@@ -49,8 +61,12 @@ export const ProjectItemComponent = ({
   return (
     <Waypoint onEnter={handleProjectAnimation} bottomOffset="25%">
       <div className={classNames('project-item', isHiddenClass)}>
-        <div className="project__info">
-          <div ref={projectRef} id="project-animation__info" className="project-animation__info" />
+        <div className={`project__info ${classes.project__info}`}>
+          <div
+            ref={projectRef}
+            id="project-animation__info"
+            className={`project-animation__info ${classes['project-animation__info']}`}
+          />
           <div className="project__oversight">
             <h4 className="project__title">{project.title}</h4>
             <div className="border" style={{ width: 100, height: 2 }} />
@@ -110,7 +126,7 @@ export const ProjectItemComponent = ({
               <div
                 ref={projectDescriptionRef}
                 id="project-animation__description"
-                className="project-animation__description"
+                className={`project-animation__description ${classes['project-animation__description']}`}
               />
               <p className="project__description-text">{project.info}</p>
               <div className="border border--selftrough" />
@@ -141,3 +157,5 @@ export const ProjectItemComponent = ({
     </Waypoint>
   );
 };
+
+export const ProjectItemComponent = injectSheet(projectItemStyles)(ProjectItem);

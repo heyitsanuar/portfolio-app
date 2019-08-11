@@ -2,7 +2,6 @@
   position: relative;
   padding-top: 3.75rem;
   padding-bottom: 3.75rem;
-  background: #df3940;
 }
 
 .skills__more {
@@ -43,7 +42,6 @@
 
 .skills__rate {
   height: 100%;
-  background: #3d2b3b;
   transition: all 0.8s ease;
 }
 
