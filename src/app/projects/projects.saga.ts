@@ -16,8 +16,8 @@ function* fetchProjectsService() {
   return data;
 }
 
-function* cancelFetchService() {
-  yield projectService.cancelRequest();
+function* cancelFetchService(message: any) {
+  yield projectService.cancelRequest(message);
 }
 
 function* fetchProjectsRequest() {

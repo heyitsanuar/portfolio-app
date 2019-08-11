@@ -15,8 +15,8 @@ function* fetchUserService() {
   return data;
 }
 
-function* cancelFetchService(params: string) {
-  yield userService.cancelRequest(params);
+function* cancelFetchService(message: any) {
+  yield userService.cancelRequest(message);
 }
 
 function* fetchUserRequest() {

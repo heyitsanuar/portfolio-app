@@ -16,8 +16,8 @@ function* fetchSkillsService() {
   return data;
 }
 
-function* cancelFetchService() {
-  yield skillService.cancelRequest();
+function* cancelFetchService(message: any) {
+  yield skillService.cancelRequest(message);
 }
 
 function* fetchSkillsRequest() {
