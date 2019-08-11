@@ -7,12 +7,12 @@ import { SkillItemComponent } from './item.component';
 import calgaryImage from '@img/skills-background.png';
 import './skills.styles.css';
 
-interface SkillListProps {
+export interface SkillListProps {
   skills: SkillType[];
 }
 
 export const SkillListComponent = ({ skills }: SkillListProps) => {
-  const renderItemList = (): any => {
+  const renderItemList = () => {
     return skills.map((skill: SkillType) => {
       if (!skill.isSoftSkill) {
         return <SkillItemComponent key={skill._id} skill={skill} />;

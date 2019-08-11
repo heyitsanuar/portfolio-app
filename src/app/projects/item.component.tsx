@@ -7,11 +7,11 @@ import { ProjectTechnologyComponent } from './technology.component';
 import { Waypoint } from 'react-waypoint';
 import classNames from 'classnames';
 
-export type ProjectItemProps = {
+export interface ProjectItemProps {
   project: ProjectType;
   lastIndex: number;
   changePageAction: Function;
-};
+}
 
 export const ProjectItemComponent = ({
   project,

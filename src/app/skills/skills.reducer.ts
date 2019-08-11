@@ -1,9 +1,9 @@
-import { handleActions } from 'redux-actions';
-
-import { fetchSkillsAction } from './skills.action';
 import { ProjectStateInterface } from '@app/projects/projects.reducer';
 import { ActionInterface } from '@interfaces/action.interface';
 import { AppStateInterface } from '@rdx/root.reducer';
+
+import { handleActions } from 'redux-actions';
+import { fetchSkillsAction } from './skills.action';
 
 export interface SkillsStateInterface {
   items: object;

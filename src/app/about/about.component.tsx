@@ -8,14 +8,14 @@ import dotsImage from '@img/dots.png';
 
 import './about.styles.css';
 
-type AboutComponentInterface = {
+export interface AboutComponentProps {
   description: string;
   classes?: any;
-};
+}
 
 const aboutStyles = (theme: Theming) => ({});
 
-const About = ({ description }: AboutComponentInterface) => {
+const About = ({ description }: AboutComponentProps) => {
   const backgroundRef = useRef(null);
   const titleRef = useRef(null);
 

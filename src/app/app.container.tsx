@@ -6,22 +6,21 @@ import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';
 import { AppStateInterface } from '@rdx/root.reducer';
-
-import { ThemeProvider } from 'react-jss';
-import { configRootTheme } from '@themes/root.theme';
+import { fetchUserAction } from './user.actions';
+import { fetchProjectsAction } from './projects/projects.action';
+import { fetchSkillsAction } from './skills/skills.action';
 
 import { AboutContainer } from './about/about.container';
 import { ProjectContainer } from './projects/projects.container';
 import { SkillsContainer } from './skills/skills.container';
 import { FactsComponent } from './facts/facts.component';
-import { FooterContainer } from './../shared/layout/footer/footer.container';
+import { FooterContainer } from '@shared/layout/footer/footer.container';
 
+import { ThemeProvider } from 'react-jss';
+import { configRootTheme } from '@themes/root.theme';
 import './normalize.styles.css';
-import { fetchUserAction } from './user.actions';
-import { fetchProjectsAction } from './projects/projects.action';
-import { fetchSkillsAction } from './skills/skills.action';
 
-type AppProps = {
+export interface AppProps {
   fetchUserAction: Function;
   fetchProjectsAction: Function;
   fetchSkillsAction: Function;
@@ -29,7 +28,7 @@ type AppProps = {
   cancelFetchProjectsAction: Function;
   cancelFetchSkillsAction: Function;
   theme: string;
-};
+}
 
 const App = ({
   fetchUserAction,
@@ -46,11 +45,18 @@ const App = ({
     fetchSkillsAction();
 
     return () => {
-      cancelFetchUserAction();
-      cancelFetchProjectsAction();
-      fetchSkillsAction();
+      cancelFetchUserAction('User fetch request cancelled.');
+      cancelFetchProjectsAction('Project fetch request cancelled.');
+      cancelFetchSkillsAction('Skills fetch request cancelled.');
     };
-  }, [cancelFetchProjectsAction, cancelFetchUserAction, fetchProjectsAction, fetchSkillsAction, fetchUserAction]);
+  }, [
+    fetchProjectsAction,
+    fetchSkillsAction,
+    fetchUserAction,
+    cancelFetchProjectsAction,
+    cancelFetchSkillsAction,
+    cancelFetchUserAction,
+  ]);
 
   return (
     <Router history={routerHistory}>

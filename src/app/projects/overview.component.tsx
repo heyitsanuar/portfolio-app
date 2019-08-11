@@ -9,7 +9,7 @@ import './projects.styles.css';
 
 const projectOverviewStyles = (theme: Theming) => ({});
 
-interface ProjectOverviewComponentInterface {
+export interface ProjectOverviewComponentProps {
   projects: ProjectItemProps[];
   lastIndex: number;
   changeProjectAction: Function;
@@ -20,7 +20,7 @@ const ProjectOverview = ({
   projects,
   lastIndex,
   changeProjectAction,
-}: ProjectOverviewComponentInterface) => {
+}: ProjectOverviewComponentProps) => {
   const titleRef = useRef(null);
   const introTextRef = useRef(null);
 

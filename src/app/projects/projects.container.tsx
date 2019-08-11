@@ -3,11 +3,11 @@ import React from 'react';
 import { AppStateInterface } from '@rdx/root.reducer';
 import { ProjectItemProps } from '@app/projects/item.component';
 
-import { ProjectOverviewComponent } from './overview.component';
-
 import { connect } from 'react-redux';
 import { changeProjectAction } from './projects.action';
 import { getProjects, getLastIndex } from './projects.reducer';
+
+import { ProjectOverviewComponent } from './overview.component';
 
 export interface ProjectsContainerProps {
   projects: ProjectItemProps[];

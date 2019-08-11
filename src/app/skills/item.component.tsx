@@ -4,10 +4,10 @@ import { SkillType } from './skill.type';
 
 import injectSheet, { Theming } from 'react-jss';
 
-type SkillItemProps = {
+export interface SkillItemProps {
   skill: SkillType;
   classes?: any;
-};
+}
 
 const skillItemStyles = (theme: Theming) => ({});
 

@@ -1,8 +1,8 @@
+import { AppStateInterface } from '@rdx/root.reducer';
 import { ActionInterface } from '@interfaces/action.interface';
 
 import { handleActions } from 'redux-actions';
 import { fetchProjectsAction, changeProjectAction } from './projects.action';
-import { AppStateInterface } from './../../shared/rdx/root.reducer';
 
 export interface ProjectStateInterface {
   items: any;

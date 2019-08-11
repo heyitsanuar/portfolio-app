@@ -42,7 +42,7 @@ export function* fetchProjectsSaga() {
   yield takeLatest(fetchProjectsAction.FULFILL, cancelFetchService);
 }
 
-function* changeProjectPage(payload: any) {
+function* changeProjectPage() {
   yield put(changeProjectAction.fulfill());
 }
 

@@ -8,9 +8,9 @@ import { getSkillsSelector } from './skills.reducer';
 
 import { SkillListComponent } from './list.component';
 
-type SkillsContainerProps = {
+export interface SkillsContainerProps {
   skills: SkillType[];
-};
+}
 
 const Skills = ({ skills }: SkillsContainerProps) => {
   return <SkillListComponent skills={skills} />;
