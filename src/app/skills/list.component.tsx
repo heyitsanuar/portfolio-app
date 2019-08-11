@@ -1,33 +1,38 @@
 import React from 'react';
 
+import { SkillType } from './skill.type';
+
 import { SkillItemComponent } from './item.component';
 
 import calgaryImage from '@img/skills-background.png';
 import './skills.styles.css';
 
-export const SkillListComponent = () => {
-  const items: any = [
-    { name: 'HTML' },
-    { name: 'CSS' },
-    { name: 'JavaScript' },
-    { name: 'Angular' },
-    { name: 'React' },
-  ];
-  const tools: any = ['Express.js', 'Git', 'SQL', 'NO-SQL', 'SASS'];
+export interface SkillListProps {
+  skills: SkillType[];
+}
 
-  const renderItemList = (): any => {
-    return items.map((item: any, index: string): any => {
-      return <SkillItemComponent key={index} {...item} />;
+export const SkillListComponent = ({ skills }: SkillListProps) => {
+  const renderItemList = () => {
+    return skills.map((skill: SkillType) => {
+      if (!skill.isSoftSkill) {
+        return <SkillItemComponent key={skill._id} skill={skill} />;
+      }
+
+      return null;
     });
   };
 
   const renderTools = (): any => {
-    return tools.map((tool: any, index: string): any => {
-      return (
-        <i key={index} className="btn btn__link btn--no-link mb-1">
-          {tool}
-        </i>
-      );
+    return skills.map((skill: SkillType) => {
+      if (skill.isSoftSkill) {
+        return (
+          <i key={skill._id} className="btn btn__link btn--no-link mb-1">
+            {skill.title}
+          </i>
+        );
+      }
+
+      return null;
     });
   };
 

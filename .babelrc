@@ -7,6 +7,7 @@
         "root": ["./"],
         "alias": {
           "@app": "./src/app",
+          "@services": "./src/services",
           "@shared": "./src/shared",
           "@constants": "./src/shared/constants",
           "@img": "./src/shared/media/img",
