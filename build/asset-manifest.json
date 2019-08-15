@@ -1,29 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.628d67d3.chunk.css",
-    "main.js": "/static/js/main.215a58b0.chunk.js",
-    "main.js.map": "/static/js/main.215a58b0.chunk.js.map",
+    "main.css": "/static/css/main.85622a79.chunk.css",
+    "main.js": "/static/js/main.27d82d02.chunk.js",
+    "main.js.map": "/static/js/main.27d82d02.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.7c87754f.chunk.js": "/static/js/2.7c87754f.chunk.js",
-    "static/js/2.7c87754f.chunk.js.map": "/static/js/2.7c87754f.chunk.js.map",
+    "static/js/2.69e19af2.chunk.js": "/static/js/2.69e19af2.chunk.js",
+    "static/js/2.69e19af2.chunk.js.map": "/static/js/2.69e19af2.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.9a64e44bc2aa4cc0b852cf577deb0992.js": "/precache-manifest.9a64e44bc2aa4cc0b852cf577deb0992.js",
+    "precache-manifest.f452900760f4270f62a915d351b1c579.js": "/precache-manifest.f452900760f4270f62a915d351b1c579.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.628d67d3.chunk.css.map": "/static/css/main.628d67d3.chunk.css.map",
-    "static/media/conflict--active.png": "/static/media/conflict--active.ab819d81.png",
-    "static/media/conflict.png": "/static/media/conflict.6391a0bc.png",
-    "static/media/creativity--active.png": "/static/media/creativity--active.64eb50e0.png",
-    "static/media/creativity.png": "/static/media/creativity.1b47a06b.png",
-    "static/media/dots.png": "/static/media/dots.4ab11177.png",
-    "static/media/header-hq.jpg": "/static/media/header-hq.1f9c344d.jpg",
-    "static/media/header-lq.jpg": "/static/media/header-lq.65882f02.jpg",
-    "static/media/header-mq.jpg": "/static/media/header-mq.1cbc1d2e.jpg",
-    "static/media/skills-background.png": "/static/media/skills-background.6abe9f24.png",
-    "static/media/teamwork--active.png": "/static/media/teamwork--active.ff3e79ac.png",
-    "static/media/teamwork.png": "/static/media/teamwork.558bfb80.png",
-    "static/media/who-i-am.jpeg": "/static/media/who-i-am.b8c879ea.jpeg",
-    "static/media/work--active.png": "/static/media/work--active.363605f9.png",
-    "static/media/work.png": "/static/media/work.51da3508.png"
+    "static/css/main.85622a79.chunk.css.map": "/static/css/main.85622a79.chunk.css.map"
   }
 }

@@ -61,7 +61,11 @@ const SkillList = ({ skills, classes }: SkillListProps) => {
             <div className="skills__more col-sm-10">{renderTools()}</div>
           </div>
         </div>
-        <img className="skills__profile lazyload" src={calgaryImage} alt="Anuar Jiménez" />
+        <img
+          className="skills__profile lazyload"
+          src="https://i.ibb.co/Nj6L9q8/skills-background.png"
+          alt="Anuar Jiménez"
+        />
       </div>
     </section>
   );

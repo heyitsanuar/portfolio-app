@@ -1,18 +1,5 @@
 import React from 'react';
 
-import selftaughtImage from '@img/features/self-taught.png';
-import creativeImage from '@img/features/creativity.png';
-import teamworkImage from '@img/features/teamwork.png';
-import workImage from '@img/features/work.png';
-import conflictImage from '@img/features/conflict.png';
-import selftaughtActiveImage from '@img/features/self-taught--active.png';
-import decisionImage from '@img/features/decision.png';
-import creativeActiveImage from '@img/features/creativity--active.png';
-import teamworkActiveImage from '@img/features/teamwork--active.png';
-import workActiveImage from '@img/features/work--active.png';
-import conflictActiveImage from '@img/features/conflict--active.png';
-import decisionActiveImage from '@img/features/decision--active.png';
-
 import './facts.styles.css';
 
 export const FactsComponent = () => {
@@ -32,52 +19,72 @@ export const FactsComponent = () => {
           <div className="facts__image">
             <img
               className="facts__thumb--inactive lazyload"
-              src={selftaughtImage}
+              src="https://i.ibb.co/FnPr7pY/self-taught.png"
               alt="Self taught"
             />
             <img
               className="facts__thumb--active lazyload"
-              src={selftaughtActiveImage}
+              src="https://i.ibb.co/B3tSx9t/self-taught-active.png"
               alt="Self taught"
             />
           </div>
           <div className="facts__image">
-            <img className="facts__thumb--inactive lazyload" src={creativeImage} alt="Creative" />
+            <img
+              className="facts__thumb--inactive lazyload"
+              src="https://i.ibb.co/8zytSmz/creativity.png"
+              alt="Creative"
+            />
             <img
               className="facts__thumb--active lazyload"
-              src={creativeActiveImage}
+              src="https://i.ibb.co/xF5J2N4/creativity-active.png"
               alt="Creative"
             />
           </div>
           <div className="facts__image">
-            <img className="facts__thumb--inactive lazyload" src={teamworkImage} alt="Team Work" />
+            <img
+              className="facts__thumb--inactive lazyload"
+              src="https://i.ibb.co/HDkspd6/teamwork.png"
+              alt="Team Work"
+            />
             <img
               className="facts__thumb--active lazyload"
-              src={teamworkActiveImage}
+              src="https://i.ibb.co/BT46QmD/teamwork-active.png"
               alt="Team Work"
             />
           </div>
           <div className="facts__image">
-            <img className="facts__thumb--inactive lazyload" src={workImage} alt="Work" />
-            <img className="facts__thumb--active lazyload" src={workActiveImage} alt="Work" />
-          </div>
-          <div className="facts__image">
-            <img className="facts__thumb--inactive lazyload" src={conflictImage} alt="Conflict" />
+            <img
+              className="facts__thumb--inactive lazyload"
+              src="https://i.ibb.co/hX5x00n/work.png"
+              alt="Work"
+            />
             <img
               className="facts__thumb--active lazyload"
-              src={conflictActiveImage}
+              src="https://i.ibb.co/3mHXhzK/work-active.png"
+              alt="Work"
+            />
+          </div>
+          <div className="facts__image">
+            <img
+              className="facts__thumb--inactive lazyload"
+              src="https://i.ibb.co/ncp63h8/conflict.png"
+              alt="Conflict"
+            />
+            <img
+              className="facts__thumb--active lazyload"
+              src="https://i.ibb.co/r7MLwGz/conflict-active.png"
               alt="Conflict"
             />
           </div>
           <div className="facts__image">
             <img
               className="facts__thumb--inactive lazyload"
-              src={decisionImage}
+              src="https://i.ibb.co/YTFN1Qv/decision.png"
               alt="Decision making"
             />
             <img
               className="facts__thumb--active lazyload"
-              src={decisionActiveImage}
+              src="https://i.ibb.co/TTCm59z/decision-active.png"
               alt="Decision making"
             />
           </div>
