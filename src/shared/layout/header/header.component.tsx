@@ -4,11 +4,6 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 import injectSheet from 'react-jss';
 
-import headerHq from '@img/header-hq.jpg';
-import headerMq from '@img/header-mq.jpg';
-import headerLq from '@img/header-lq.jpg';
-import headerLogo from '@img/logo.png';
-
 import './header.styles.css';
 
 interface HeaderComponentProps extends RouteComponentProps {
@@ -39,7 +34,11 @@ const Header = ({ classes }: HeaderComponentProps) => {
             PROJECTS
           </a>
           <a id="logo" className="header__menu-link header__menu-link--logo" href="#banner-info">
-            <img src={headerLogo} alt="AJ" style={{ width: 40, height: 40 }} />
+            <img
+              src="https://i.ibb.co/bFKkM4J/logo.png"
+              alt="AJ"
+              style={{ width: 40, height: 40 }}
+            />
           </a>
           <a id="link-skills" className="header__menu-link" href="#skills">
             SKILLS
@@ -54,14 +53,22 @@ const Header = ({ classes }: HeaderComponentProps) => {
         </nav>
         <div className="header__mobile container">
           <a href="/">
-            <img src={headerLogo} alt="AJ" style={{ width: 30, height: 30 }} />
+            <img
+              src="https://i.ibb.co/bFKkM4J/logo.png"
+              alt="AJ"
+              style={{ width: 30, height: 30 }}
+            />
             <i id="btn-menu-open" className="btn__mobile-icon fas text-white fa-bars" />
           </a>
         </div>
         <picture>
-          <source srcSet={headerHq} media="(min-width: 992px)" />
-          <source srcSet={headerMq} media="(min-width: 768px)" />
-          <img srcSet={headerLq} className="header__background lazyload" alt="Header" />
+          <source srcSet="https://i.ibb.co/w6xT6sm/header-hq.jpg" media="(min-width: 992px)" />
+          <source srcSet="https://i.ibb.co/47KtCdf/header-mq.jpg" media="(min-width: 768px)" />
+          <img
+            srcSet="https://i.ibb.co/xFDPkhs/header-lq.jpg"
+            className="header__background lazyload"
+            alt="Header"
+          />
         </picture>
         <div id="banner-info" className="header__banner">
           <div className="container">

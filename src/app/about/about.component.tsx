@@ -3,9 +3,6 @@ import React, { useRef } from 'react';
 import { Waypoint } from 'react-waypoint';
 import injectSheet from 'react-jss';
 
-import whoIAmImage from '@img/who-i-am.jpeg';
-import dotsImage from '@img/dots.png';
-
 import './about.styles.css';
 
 export interface AboutComponentProps {
@@ -62,10 +59,18 @@ const About = ({ description, classes }: AboutComponentProps) => {
             <p className="text-white">{description}</p>
           </div>
           <picture className="about__picture">
-            <img className="image lazyload" src={whoIAmImage} alt="About me" />
+            <img
+              className="image lazyload"
+              src="https://i.ibb.co/1qgkSbB/67127545-2618001891760105-1208530439052984320-n.jpg"
+              alt="About me"
+            />
           </picture>
         </div>
-        <img className="about__dots lazyload" src={dotsImage} alt="" />
+        <img
+          className="about__dots lazyload"
+          src="https://i.ibb.co/Nt4WYzq/dots.png"
+          alt="Cute dots"
+        />
       </section>
     </Waypoint>
   );
