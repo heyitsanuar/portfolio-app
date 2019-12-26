@@ -5,6 +5,8 @@ import { AppStateInterface } from '@rdx/root.reducer';
 import { handleActions } from 'redux-actions';
 import { fetchSkillsAction } from './skills.action';
 
+import { skills } from '../../shared/data/skills';
+
 export interface SkillsStateInterface {
   items: object;
   isLoadingData: boolean;
@@ -13,7 +15,7 @@ export interface SkillsStateInterface {
 }
 
 const INITIAL_STATE: SkillsStateInterface = {
-  items: {},
+  items: skills,
   isLoadingData: false,
   hasError: false,
 };

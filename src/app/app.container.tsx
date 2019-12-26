@@ -6,9 +6,6 @@ import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';
 import { AppStateInterface } from '@rdx/root.reducer';
-import { fetchUserAction } from './user.actions';
-import { fetchProjectsAction } from './projects/projects.action';
-import { fetchSkillsAction } from './skills/skills.action';
 
 import { AboutContainer } from './about/about.container';
 import { ProjectContainer } from './projects/projects.container';
@@ -21,43 +18,10 @@ import { configRootTheme } from '@themes/root.theme';
 import './normalize.styles.css';
 
 export interface AppProps {
-  fetchUserAction: Function;
-  fetchProjectsAction: Function;
-  fetchSkillsAction: Function;
-  cancelFetchUserAction: Function;
-  cancelFetchProjectsAction: Function;
-  cancelFetchSkillsAction: Function;
   theme: string;
 }
 
-const App = ({
-  fetchUserAction,
-  fetchProjectsAction,
-  fetchSkillsAction,
-  cancelFetchUserAction,
-  cancelFetchProjectsAction,
-  cancelFetchSkillsAction,
-  theme,
-}: AppProps) => {
-  useEffect(() => {
-    fetchUserAction();
-    fetchProjectsAction();
-    fetchSkillsAction();
-
-    return () => {
-      cancelFetchUserAction('User fetch request cancelled.');
-      cancelFetchProjectsAction('Project fetch request cancelled.');
-      cancelFetchSkillsAction('Skills fetch request cancelled.');
-    };
-  }, [
-    fetchProjectsAction,
-    fetchSkillsAction,
-    fetchUserAction,
-    cancelFetchProjectsAction,
-    cancelFetchSkillsAction,
-    cancelFetchUserAction,
-  ]);
-
+const App = ({ theme }: AppProps) => {
   return (
     <Router history={routerHistory}>
       <ThemeProvider theme={configRootTheme(theme)}>
@@ -80,16 +44,4 @@ const mapStateToProps = (state: AppStateInterface) => ({
   theme: state.theme.activeTheme,
 });
 
-const mapDispatchToProps = {
-  fetchUserAction: fetchUserAction.request,
-  fetchProjectsAction: fetchProjectsAction.request,
-  fetchSkillsAction: fetchSkillsAction.request,
-  cancelFetchUserAction: fetchUserAction.fulfill,
-  cancelFetchProjectsAction: fetchProjectsAction.fulfill,
-  cancelFetchSkillsAction: fetchSkillsAction.fulfill,
-};
-
-export const AppContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export const AppContainer = connect(mapStateToProps)(App);

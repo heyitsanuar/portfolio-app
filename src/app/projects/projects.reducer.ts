@@ -4,6 +4,8 @@ import { ActionInterface } from '@interfaces/action.interface';
 import { handleActions } from 'redux-actions';
 import { fetchProjectsAction, changeProjectAction } from './projects.action';
 
+import { projects } from '../../shared/data/project';
+
 export interface ProjectStateInterface {
   items: any;
   isLoadingData: boolean;
@@ -12,7 +14,7 @@ export interface ProjectStateInterface {
 }
 
 const INITIAL_STATE: ProjectStateInterface = {
-  items: {},
+  items: projects,
   isLoadingData: false,
   hasError: false,
 };

@@ -4,6 +4,8 @@ import { UserType } from './user.type';
 import { handleActions } from 'redux-actions';
 import { fetchUserAction } from './user.actions';
 
+import { user } from '../shared/data/user';
+
 export interface UserStateInterface {
   session: UserType;
   isLoadingData: boolean;
@@ -12,12 +14,7 @@ export interface UserStateInterface {
 }
 
 const INITIAL_STATE: UserStateInterface = {
-  session: {
-    name: '',
-    surname: '',
-    description: '',
-    email: '',
-  },
+  session: user,
   isLoadingData: false,
   hasError: false,
 };
