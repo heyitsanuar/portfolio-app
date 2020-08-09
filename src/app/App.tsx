@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "react-jss";
 
 import About from "features/About/About";
+import Facts from "features/Facts/Facts";
 import { Header, Footer } from "app/components/Layout";
 
 /*
@@ -24,6 +25,7 @@ const App: React.FC = (props) => {
         <Header />
         <section className='landing-page'>
           <About description={user.description} />
+          <Facts />
           {/*
           <AboutContainer /> 
           <ProjectContainer />
