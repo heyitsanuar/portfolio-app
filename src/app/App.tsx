@@ -12,6 +12,7 @@ import { SkillsContainer } from "./skills/skills.container";
 import { FactsComponent } from "./facts/facts.component";
 */
 
+import { user } from "data";
 import darkTheme from "shared/providers/theme/darkTheme";
 import "./normalizeStyles.scss";
 import "./appStyles.scss";
@@ -22,7 +23,7 @@ const App: React.FC = (props) => {
       <ThemeProvider theme={darkTheme}>
         <Header />
         <section className='landing-page'>
-          <About />
+          <About description={user.description} />
           {/*
           <AboutContainer /> 
           <ProjectContainer />
