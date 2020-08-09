@@ -14,6 +14,7 @@ import Footer from "shared/components/Footer";
 
 import darkTheme from "shared/providers/theme/darkTheme";
 import "./normalizeStyles.scss";
+import "./appStyles.scss";
 
 const App: React.FC = (props) => {
   return (

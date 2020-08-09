@@ -1,0 +1,30 @@
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+
+  &-white {
+    color: #ffffff;
+  }
+  &-black {
+    color: #1c1c1c;
+  }
+}
+
+.fw {
+  &-normal {
+    font-weight: normal;
+  }
+  &-bold {
+    font-weight: bold;
+  }
+  &-400 {
+    font-weight: 400;
+  }
+  &-600 {
+    font-weight: 600;
+  }
+}
