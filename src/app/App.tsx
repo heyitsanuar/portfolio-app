@@ -5,15 +5,16 @@ import { ThemeProvider } from "react-jss";
 
 import About from "features/About/About";
 import Facts from "features/Facts/Facts";
+import Skills from "features/Skills/Skills";
+import Projects from "features/Projects/Projects";
 import { Header, Footer } from "app/components/Layout";
 
 /*
 import { ProjectContainer } from "./projects/projects.container";
 import { SkillsContainer } from "./skills/skills.container";
-import { FactsComponent } from "./facts/facts.component";
 */
 
-import { user } from "data";
+import { user, skills } from "data";
 import darkTheme from "shared/providers/theme/darkTheme";
 import "./normalizeStyles.scss";
 import "./appStyles.scss";
@@ -25,6 +26,8 @@ const App: React.FC = (props) => {
         <Header />
         <section className='landing-page'>
           <About description={user.description} />
+          <Projects />
+          <Skills skills={skills} />
           <Facts />
           {/*
           <AboutContainer /> 
