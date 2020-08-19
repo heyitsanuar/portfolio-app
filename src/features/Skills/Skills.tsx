@@ -13,6 +13,7 @@ interface ISkillsProps {
 const Skills: React.FC<ISkillsProps> = (props) => {
   const { skills, classes } = props;
 
+  //hey
   const renderItemList = (): React.ReactNode =>
     skills.map((skill) => <Item key={skill.id} skill={skill} />);
 
