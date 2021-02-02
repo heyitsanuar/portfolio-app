@@ -1,0 +1,43 @@
+.btn {
+  color: #444444;
+
+  &__link {
+    font-weight: 600;
+    text-align: center;
+    background: #ffffff;
+    min-width: 5.625rem;
+    padding: 0.625rem 0;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #3d2b3b;
+      color: #ffffff;
+    }
+  }
+
+  &__mobile-icon {
+    font-size: 1.25rem;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &--link--mobile {
+    margin-right: 0;
+  }
+
+  &--icons {
+    min-width: 2.5rem;
+
+    &:hover {
+      background: #df3940;
+    }
+  }
+
+  &--no-link {
+    cursor: default;
+  }
+}

@@ -3,6 +3,7 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "baseUrl": "src",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -11,25 +12,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
-    "baseUrl": "./src",
-    "paths": {
-      "@app/*": ["app/*"],
-      "@constants/*": ["shared/constants/*"],
-      "@img/*": ["shared/media/img/*"],
-      "@interfaces/*": ["shared/interfaces/*"],
-      "@layout/*": ["shared/layout/*"],
-      "@media/*": ["shared/media/*"],
-      "@rdx/*": ["shared/rdx/*"],
-      "@routes/*": ["shared/routes/*"],
-      "@services/*": ["services/*"],
-      "@shared/*": ["shared/*"],
-      "@themes/*": ["shared/themes/*"],
-      "@shared-types/*": ["shared/types/*"],
-      "@utils/*": ["shared/utils/*"]
-    }
+    "jsx": "react"
   },
-  "include": ["src", "src/shared/data/.ts"]
+  "include": ["src"]
 }
