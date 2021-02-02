@@ -1,15 +1,11 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-
-import { ProjectType } from './project.type';
-
+import { IProject } from '@shared/models/project';
 import { fetchProjectsAction, changeProjectAction } from './projects.action';
-
-import { AxiosService } from '@services/axios/axios.service';
 
 let projectService: any;
 
 function* fetchProjectsService() {
-  projectService = new AxiosService();
+  
 
   const { data }: any = yield projectService.get({ endpoint: '/project' });
 
@@ -25,7 +21,7 @@ function* fetchProjectsRequest() {
     const { projects }: any = yield call(fetchProjectsService);
     let items = {};
 
-    projects.forEach((project: ProjectType, index: any) => {
+    projects.forEach((project: IProject, index: any) => {
       items = { ...items, [project._id]: { ...project, index } };
     });
 

@@ -1,11 +1,9 @@
 import React from 'react';
-
-import { SkillType } from './skill.type';
-
+import { ISkill } from '@shared/models/skill';
 import injectSheet from 'react-jss';
 
-export interface SkillItemProps {
-  skill: SkillType;
+export interface ISkillItemProps {
+  skill: ISkill;
   classes?: any;
 }
 
@@ -15,7 +13,7 @@ const skillItemStyles = (theme: any) => ({
   },
 });
 
-const SkillItem = ({ skill, classes }: SkillItemProps) => (
+const SkillItem = ({ skill, classes }: ISkillItemProps) => (
   <div className="skills__item">
     <div className="col-xs-2 col-lg-4">
       <p className="skills__name">{skill.title}</p>
@@ -28,4 +26,4 @@ const SkillItem = ({ skill, classes }: SkillItemProps) => (
   </div>
 );
 
-export const SkillItemComponent = injectSheet(skillItemStyles)(SkillItem);
+export default injectSheet(skillItemStyles)(SkillItem);

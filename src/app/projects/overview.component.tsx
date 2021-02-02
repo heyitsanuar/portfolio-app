@@ -1,11 +1,9 @@
 import React, { useRef } from 'react';
-
-import { ProjectItemComponent, ProjectItemProps } from './item.component';
-
+import { IProject } from '@shared/models/project'
+import ProjectItemComponent from './item.component';
 import { Waypoint } from 'react-waypoint';
 import injectSheet from 'react-jss';
-
-import './projects.styles.css';
+import './projects.styles.scss';
 
 const projectOverviewStyles = (theme: any) => ({
   'project-animation__title': {
@@ -13,36 +11,25 @@ const projectOverviewStyles = (theme: any) => ({
   },
 });
 
-export interface ProjectOverviewComponentProps {
-  projects: ProjectItemProps[];
+interface IProjectOverviewProps {
+  projects: IProject[];
   lastIndex: number;
   changeProjectAction: Function;
   classes?: any;
 }
 
-const ProjectOverview = ({
+const ProjectOverview: React.FC<IProjectOverviewProps> = ({
   projects,
   lastIndex,
   changeProjectAction,
   classes,
-}: ProjectOverviewComponentProps) => {
+}) => {
   const titleRef = useRef(null);
   const introTextRef = useRef(null);
 
-  const handleProjectsIntroWaypoint = (): any => {
+  const handleProjectsIntroWaypoint = (): void => {
     (titleRef as any).current.classList.add('project-animation__title--animated');
     (introTextRef as any).current.classList.add('project-animation__text--animated');
-  };
-
-  const renderProjects = () => {
-    return projects.map((project: any) => (
-      <ProjectItemComponent
-        key={project._id}
-        project={project}
-        changePageAction={changeProjectAction}
-        lastIndex={lastIndex}
-      />
-    ));
   };
 
   return (
@@ -74,7 +61,14 @@ const ProjectOverview = ({
             </div>
           </div>
           <div id="project-container" className="projects">
-            {renderProjects()}
+            {projects.map((project: any) => (
+              <ProjectItemComponent
+                key={project._id}
+                project={project}
+                changePageAction={changeProjectAction}
+                lastIndex={lastIndex}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -82,4 +76,4 @@ const ProjectOverview = ({
   );
 };
 
-export const ProjectOverviewComponent = injectSheet(projectOverviewStyles)(ProjectOverview);
+export default injectSheet(projectOverviewStyles)(ProjectOverview);

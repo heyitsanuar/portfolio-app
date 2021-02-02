@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { AppStateInterface } from '@rdx/root.reducer';
+import { IAppState } from '@rdx/root.reducer';
 
 import { HeaderComponent } from './header.component';
 
@@ -11,7 +11,7 @@ const Header = (props: HeaderContainerProps) => {
   return <HeaderComponent />;
 };
 
-const mapStateToProps = (state: AppStateInterface) => ({});
+const mapStateToProps = (state: IAppState) => ({});
 
 const mapDispatchToProps = {};
 

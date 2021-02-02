@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { AppStateInterface } from './../../rdx/root.reducer';
+import { IAppState } from './../../rdx/root.reducer';
 
 import { FooterComponent } from './footer.component';
 
@@ -11,7 +11,7 @@ const Footer = (props: FooterContainerProps) => {
   return <FooterComponent />;
 };
 
-const mapStateToProps = (state: AppStateInterface) => ({});
+const mapStateToProps = (state: IAppState) => ({});
 
 const mapDispatchToProps = {};
 

@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Router } from 'react-router-dom';
 import { routerHistory } from '@routes/router.history';
 import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';
-import { AppStateInterface } from '@rdx/root.reducer';
+import { IAppState } from '@rdx/root.reducer';
 
-import { AboutContainer } from './about/about.container';
-import { ProjectContainer } from './projects/projects.container';
+import AboutContainer from './about/about.component';
+import ProjectContainer from './projects/projects.container';
 import { SkillsContainer } from './skills/skills.container';
-import { FactsComponent } from './facts/facts.component';
+import FactsComponent from './facts/facts.component';
 import { FooterContainer } from '@shared/layout/footer/footer.container';
 
 import { ThemeProvider } from 'react-jss';
@@ -40,7 +40,7 @@ const App = ({ theme }: AppProps) => {
   );
 };
 
-const mapStateToProps = (state: AppStateInterface) => ({
+const mapStateToProps = (state: IAppState) => ({
   theme: state.theme.activeTheme,
 });
 

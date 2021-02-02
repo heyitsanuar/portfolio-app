@@ -1,22 +1,18 @@
 import React from 'react';
-
-import { AppStateInterface } from '@rdx/root.reducer';
-import { SkillType } from './skill.type';
-
+import { IAppState } from '@rdx/root.reducer';
+import { ISkill } from '@shared/models/skill';
 import { connect } from 'react-redux';
 import { getSkillsSelector } from './skills.reducer';
-
-import { SkillListComponent } from './list.component';
-
-export interface SkillsContainerProps {
-  skills: SkillType[];
+import SkillListComponent from './list.component';
+export interface ISkillsContainerProps {
+  skills: ISkill[];
 }
 
-const Skills = ({ skills }: SkillsContainerProps) => {
+const Skills = ({ skills }: ISkillsContainerProps) => {
   return <SkillListComponent skills={skills} />;
 };
 
-const mapStateToProps = (state: AppStateInterface) => ({
+const mapStateToProps = (state: IAppState) => ({
   skills: getSkillsSelector(state),
 });
 

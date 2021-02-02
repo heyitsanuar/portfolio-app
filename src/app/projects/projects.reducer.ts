@@ -1,4 +1,4 @@
-import { AppStateInterface } from '@rdx/root.reducer';
+import { IAppState } from '@rdx/root.reducer';
 import { ActionInterface } from '@interfaces/action.interface';
 
 import { handleActions } from 'redux-actions';
@@ -6,14 +6,14 @@ import { fetchProjectsAction, changeProjectAction } from './projects.action';
 
 import { projects } from '../../shared/data/project';
 
-export interface ProjectStateInterface {
+export interface IProjectState {
   items: any;
   isLoadingData: boolean;
   hasError: boolean;
   error?: any;
 }
 
-const INITIAL_STATE: ProjectStateInterface = {
+const INITIAL_STATE: IProjectState = {
   items: projects,
   isLoadingData: false,
   hasError: false,
@@ -21,12 +21,12 @@ const INITIAL_STATE: ProjectStateInterface = {
 
 export const projectReducer = handleActions(
   {
-    [fetchProjectsAction.REQUEST]: (state: ProjectStateInterface) => ({
+    [fetchProjectsAction.REQUEST]: (state: IProjectState) => ({
       ...state,
       isLoadingData: true,
     }),
     [fetchProjectsAction.FAILURE]: (
-      state: ProjectStateInterface,
+      state: IProjectState,
       { payload }: ActionInterface,
     ) => ({
       ...state,
@@ -35,14 +35,14 @@ export const projectReducer = handleActions(
       error: payload.error,
     }),
     [fetchProjectsAction.SUCCESS]: (
-      state: ProjectStateInterface,
+      state: IProjectState,
       { payload }: ActionInterface,
     ) => ({
       ...state,
       isLoadingData: false,
       items: payload.items,
     }),
-    [changeProjectAction.TRIGGER]: (state: ProjectStateInterface, { payload }: ActionInterface) => {
+    [changeProjectAction.TRIGGER]: (state: IProjectState, { payload }: ActionInterface) => {
       const projectsArray = Object.keys(state.items);
       const currentPageIndex: number = projectsArray.indexOf(payload.index);
       let nextPageIndex = '';
@@ -72,10 +72,10 @@ export const projectReducer = handleActions(
   INITIAL_STATE,
 );
 
-export const getProjects = (state: AppStateInterface): any => {
+export const getProjects = (state: IAppState): any => {
   return Object.keys(state.projects.items).map(key => (state.projects.items as any)[key]);
 };
 
-export const getLastIndex = (state: AppStateInterface): any => {
+export const getLastIndex = (state: IAppState): any => {
   return Object.keys(state.projects.items).length - 1;
 };

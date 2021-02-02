@@ -1,15 +1,12 @@
 import React, { useRef } from 'react';
-
-import { ProjectType } from './project.type';
-
-import { ProjectTechnologyComponent } from './technology.component';
-
+import { IProject } from '@shared/models/project';
+import ProjectTechnologyComponent from './technology.component';
 import { Waypoint } from 'react-waypoint';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
 
-export interface ProjectItemProps {
-  project: ProjectType;
+export interface IProjectItemProps {
+  project: IProject;
   lastIndex: number;
   changePageAction: Function;
   classes?: any;
@@ -29,34 +26,27 @@ const projectItemStyles = (theme: any) => ({
   },
 });
 
-const ProjectItem = ({ project, lastIndex, changePageAction, classes }: ProjectItemProps) => {
+const ProjectItem: React.FC<IProjectItemProps> = ({ project, lastIndex, changePageAction, classes }) => {
   const projectRef = useRef(null);
   const technologiesRef = useRef(null);
   const projectDescriptionRef = useRef(null);
+  const isHiddenClass = project.isInitial ? '' : 'project-item--hidden';
 
-  const handleProjectAnimation = (): any => {
+  const handleProjectAnimation = (): void => {
     (projectRef as any).current.classList.add('project-animation__info--animated');
   };
 
-  const handleTechnologiesAnimation = (): any => {
+  const handleTechnologiesAnimation = (): void => {
     (technologiesRef as any).current.classList.add('project__icons--animated');
     (projectDescriptionRef as any).current.classList.add(
       'project-animation__description--animated',
     );
   };
 
-  const handleChangePage = (e: any, direction: string) => {
+  const handleChangePage = (e: any, direction: string): void => {
     e.preventDefault();
     changePageAction({ index: project._id, direction });
   };
-
-  const renderTechnologies = () => {
-    return project.technologies.map((technology, index) => (
-      <ProjectTechnologyComponent key={index} {...technology} />
-    ));
-  };
-
-  const isHiddenClass = project.isInitial ? '' : 'project-item--hidden';
 
   return (
     <Waypoint onEnter={handleProjectAnimation} bottomOffset="25%">
@@ -119,7 +109,9 @@ const ProjectItem = ({ project, lastIndex, changePageAction, classes }: ProjectI
             <div className="project__technologies col-xs-12 col-sm-6 col-md-5 col-lg-4">
               <p className="project__technologies-title">Technologies</p>
               <div ref={technologiesRef} className="project__icons mt-35">
-                {renderTechnologies()}
+                {project.technologies.map((technology, index) => (
+                  <ProjectTechnologyComponent key={index} {...technology} />
+                ))}
               </div>
             </div>
             <div className="project__description col-xs-12 col-sm-6 col-md-7 col-lg-8 mt-5">
@@ -158,4 +150,4 @@ const ProjectItem = ({ project, lastIndex, changePageAction, classes }: ProjectI
   );
 };
 
-export const ProjectItemComponent = injectSheet(projectItemStyles)(ProjectItem);
+export default injectSheet(projectItemStyles)(ProjectItem);

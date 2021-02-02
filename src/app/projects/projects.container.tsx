@@ -1,21 +1,17 @@
 import React from 'react';
-
-import { AppStateInterface } from '@rdx/root.reducer';
-import { ProjectItemProps } from '@app/projects/item.component';
-
+import { IAppState } from '@rdx/root.reducer';
+import { IProject } from '@shared/models/project';
 import { connect } from 'react-redux';
 import { changeProjectAction } from './projects.action';
 import { getProjects, getLastIndex } from './projects.reducer';
-
-import { ProjectOverviewComponent } from './overview.component';
-
-export interface ProjectsContainerProps {
-  projects: ProjectItemProps[];
+import ProjectOverviewComponent from './overview.component';
+export interface IProjectsProps {
+  projects: IProject[];
   lastIndex: number;
   changeProjectAction: Function;
 }
 
-const Project = ({ projects, lastIndex, changeProjectAction }: ProjectsContainerProps) => {
+const Project: React.FC<IProjectsProps> = ({ projects, lastIndex, changeProjectAction }) => {
   return (
     <ProjectOverviewComponent
       projects={projects}
@@ -25,7 +21,7 @@ const Project = ({ projects, lastIndex, changeProjectAction }: ProjectsContainer
   );
 };
 
-const mapStateToProps = (state: AppStateInterface) => ({
+const mapStateToProps = (state: IAppState) => ({
   projects: getProjects(state),
   lastIndex: getLastIndex(state),
 });
@@ -34,7 +30,7 @@ const mapDispatchToProps = {
   changeProjectAction: changeProjectAction.trigger,
 };
 
-export const ProjectContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Project);

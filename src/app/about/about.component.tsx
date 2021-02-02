@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
-
+import { IAppState } from '@rdx/root.reducer';
+import { connect } from 'react-redux';
 import { Waypoint } from 'react-waypoint';
 import injectSheet from 'react-jss';
+import './about.styles.scss';
 
-import './about.styles.css';
-
-export interface AboutComponentProps {
+export interface IAboutProps {
   description: string;
   classes?: any;
 }
@@ -27,11 +27,11 @@ const aboutStyles = (theme: any) => ({
   },
 });
 
-const About = ({ description, classes }: AboutComponentProps) => {
+const About: React.FC<IAboutProps> = ({ description, classes }) => {
   const backgroundRef = useRef(null);
   const titleRef = useRef(null);
 
-  const handleAboutAnimation = (): any => {
+  const handleAboutAnimation = (): void => {
     (backgroundRef as any).current.classList.add('about__bg--animated');
     (titleRef as any).current.classList.add('about__title--animated');
   };
@@ -76,4 +76,10 @@ const About = ({ description, classes }: AboutComponentProps) => {
   );
 };
 
-export const AboutComponent = injectSheet(aboutStyles)(About);
+const mapStateToProps = (state: IAppState) => ({
+  description: state.user.session.description,
+});
+
+const connectedAbout = connect(mapStateToProps)(About);
+
+export default injectSheet(aboutStyles)(connectedAbout);

@@ -1,9 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-
-import { SkillType } from './skill.type';
-
+import { ISkill } from '@shared/models/skill';
 import { fetchSkillsAction } from './skills.action';
-
 import { AxiosService } from '@services/axios/axios.service';
 
 let skillService: any;
@@ -25,7 +22,7 @@ function* fetchSkillsRequest() {
     const { skills }: any = yield call(fetchSkillsService);
     let items = {};
 
-    skills.forEach((skill: SkillType) => {
+    skills.forEach((skill: ISkill) => {
       items = { ...items, [skill._id]: skill };
     });
 
